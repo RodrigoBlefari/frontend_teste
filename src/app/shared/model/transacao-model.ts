@@ -5,8 +5,8 @@ class Transacao {
 }
 
 enum TipoTransacao {
-    Comprar = 0,
-    Vender = 1
+    COMPRAR = 0,
+    VENDER = 1
 }
 
 export { Transacao, TipoTransacao }

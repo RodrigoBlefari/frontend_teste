@@ -1,25 +1,31 @@
 <h1>Controle Financeiro</h1>
 
-<form action="/action_page.php">
+<form [formGroup]="transacaoForm" (ngSubmit)="onSubmit()">
   <label>Tipo transação</label><br>
-  <select>
-    <option selected value="0">Compra</option>
-    <option value="1">Venda</option>
+  <select formControlName="tipoTransacao">
+    <option selected value="0">Comprar</option>
+    <option value="1">Vender</option>
   </select>
   <br>
   Nome da Mercadoria:<br>
-  <input type="text" name="mercadoria" placeholder="Mercadoria">
+  <input formControlName="mercadoria" type="text" name="mercadoria" placeholder="Mercadoria">
   <br>
-  <input type="text" name="valor" placeholder="R$ 0,00">
+  <input type="text" formControlName="valor" name="valor" placeholder="R$ 0,00">
   <br><br>
-  <input type="submit" value="Adicionar transação">
+  <input [disabled]="!transacaoForm.valid" type="submit" value="Adicionar transação">
 </form>
 
 <h1>Extrato de Tensações</h1>
 
 <table>
   <tr>
+    <th>Tipo</th>
     <th>Mercadoria</th>
     <th>Valor</th>
+  </tr>
+  <tr *ngFor="let t of transacoes">
+    <td>{{t.Tipo}}</td>
+    <td>{{t.Mercadoria}}</td>
+    <td>{{t.Valor}}</td>
   </tr>
 </table>
