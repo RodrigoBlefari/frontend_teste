@@ -19,13 +19,17 @@ export class PainelComponent implements OnInit {
 
   transacao: Transacao = new Transacao;
   transacoes: Transacao[] = [];
+  valorTotal: number = 0;
 
   constructor(private transacaoService: TransacaoService) { }
 
   ngOnInit() {
+    this.atualizaComponente();
+  }
 
+  atualizaComponente() {
     this.recuperaTransacoes();
-
+    this.pegarTotal(null);
   }
 
   recuperaTransacoes() {
@@ -36,15 +40,38 @@ export class PainelComponent implements OnInit {
     this.transacaoService.inserirTransacoes(transacoes);
   }
 
+  pegarTotal(filtro: number) {
+    this.valorTotal = 0;
+    if (filtro == TipoTransacao.COMPRAR || filtro == null)
+      this.transacoes.filter(tra => tra.Tipo == TipoTransacao.COMPRAR).forEach(x => this.valorTotal = this.valorTotal - x.Valor);
+
+    if (filtro == TipoTransacao.VENDER || filtro == null)
+      this.transacoes.filter(tra => tra.Tipo == TipoTransacao.VENDER).forEach(x => this.valorTotal = this.valorTotal + x.Valor);
+  }
+
+  retornaTipoTabela(tipo: number) {
+    return tipo == TipoTransacao.COMPRAR ? "-" : "+";
+  }
+
+  filtro(tipo: number) {
+    this.transacoes = this.transacaoService.pegarTranscacoes().filter(tra => tra.Tipo == tipo);
+    this.pegarTotal(tipo);
+  }
+  zerarTransacoes() {
+    this.transacaoService.zerarTransacoes();
+    this.atualizaComponente();
+  }
+
   onSubmit() {
     if (this.transacaoForm.valid) {
+      this.transacoes = this.transacaoService.pegarTranscacoes();
       this.transacao.Mercadoria = this.transacaoForm.value.mercadoria;
-      this.transacao.Valor = this.transacaoForm.value.valor;
+      this.transacao.Valor = Number.parseInt(this.transacaoForm.value.valor);
       this.transacao.Tipo = this.transacaoForm.value.tipoTransacao == 0 ? TipoTransacao.COMPRAR : TipoTransacao.VENDER;
       this.transacoes.push(this.transacao);
       this.inseriTransacoes(this.transacoes);
       this.transacao = new Transacao;
-      console.table(this.transacao);
+      this.atualizaComponente();
     }
   }
 }

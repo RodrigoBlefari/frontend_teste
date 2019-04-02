@@ -24,4 +24,8 @@ export class TransacaoService {
   inserirTransacoes(transacoes: Transacao[]) {
     return localStorage.setItem('transacoes', JSON.stringify(transacoes));
   }
+
+  zerarTransacoes() {
+    localStorage.removeItem('transacoes');
+  }
 }

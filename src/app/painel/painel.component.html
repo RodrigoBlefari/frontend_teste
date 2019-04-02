@@ -10,13 +10,14 @@
   Nome da Mercadoria:<br>
   <input formControlName="mercadoria" type="text" name="mercadoria" placeholder="Mercadoria">
   <br>
-  <input type="text" formControlName="valor" name="valor" placeholder="R$ 0,00">
+  <input type="text" formControlName="valor" name="valor" value="" placeholder="R$ 0,00">
   <br><br>
   <input [disabled]="!transacaoForm.valid" type="submit" value="Adicionar transação">
 </form>
 
-<h1>Extrato de Tensações</h1>
-
+<h1>Extrato de Transações</h1>
+<button type="button" (click)="filtro(0)">Compras</button>
+<button type="button" (click)="filtro(1)">Vendas</button>
 <table>
   <tr>
     <th>Tipo</th>
@@ -24,8 +25,14 @@
     <th>Valor</th>
   </tr>
   <tr *ngFor="let t of transacoes">
-    <td>{{t.Tipo}}</td>
+    <td>{{retornaTipoTabela(t.Tipo)}}</td>
     <td>{{t.Mercadoria}}</td>
-    <td>{{t.Valor}}</td>
+    <td>{{t.Valor | currency:'BRL'}}</td>
+  </tr>
+  <tr style="border-top:black 5px solid;margin-top: 5px;">
+    <td colspan="2">Total</td>
+    <td>{{valorTotal | currency:'BRL'}}</td>
   </tr>
 </table>
+<br>
+<button type="button" (click)="zerarTransacoes()">Zerar Transações</button>
