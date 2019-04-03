@@ -1,6 +1,6 @@
 class Transacao {
     Tipo: TipoTransacao
-    Mercadoria: String
+    Mercadoria: string
     Valor: number
 }
 

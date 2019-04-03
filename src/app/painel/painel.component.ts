@@ -17,9 +17,9 @@ export class PainelComponent implements OnInit {
     valor: new FormControl('', Validators.required)
   });
 
-  transacao: Transacao = new Transacao;
+  transacao: Transacao = new Transacao();
   transacoes: Transacao[] = [];
-  valorTotal: number = 0;
+  valorTotal = 0;
 
   constructor(private transacaoService: TransacaoService) { }
 
@@ -42,19 +42,19 @@ export class PainelComponent implements OnInit {
 
   pegarTotal(filtro: number) {
     this.valorTotal = 0;
-    if (filtro == TipoTransacao.COMPRAR || filtro == null)
-      this.transacoes.filter(tra => tra.Tipo == TipoTransacao.COMPRAR).forEach(x => this.valorTotal = this.valorTotal - x.Valor);
+    if (filtro === TipoTransacao.COMPRAR || filtro === null)
+      this.transacoes.filter(tra => tra.Tipo === TipoTransacao.COMPRAR).forEach(x => this.valorTotal = this.valorTotal - x.Valor);
 
-    if (filtro == TipoTransacao.VENDER || filtro == null)
-      this.transacoes.filter(tra => tra.Tipo == TipoTransacao.VENDER).forEach(x => this.valorTotal = this.valorTotal + x.Valor);
+    if (filtro === TipoTransacao.VENDER || filtro === null)
+      this.transacoes.filter(tra => tra.Tipo === TipoTransacao.VENDER).forEach(x => this.valorTotal = this.valorTotal + x.Valor);
   }
 
   retornaTipoTabela(tipo: number) {
-    return tipo == TipoTransacao.COMPRAR ? "-" : "+";
+    return tipo === TipoTransacao.COMPRAR ? '-' : '+';
   }
 
   filtro(tipo: number) {
-    this.transacoes = this.transacaoService.pegarTranscacoes().filter(tra => tra.Tipo == tipo);
+    this.transacoes = this.transacaoService.pegarTranscacoes().filter(tra => tra.Tipo === tipo);
     this.pegarTotal(tipo);
   }
   zerarTransacoes() {
@@ -67,10 +67,10 @@ export class PainelComponent implements OnInit {
       this.transacoes = this.transacaoService.pegarTranscacoes();
       this.transacao.Mercadoria = this.transacaoForm.value.mercadoria;
       this.transacao.Valor = Number.parseInt(this.transacaoForm.value.valor);
-      this.transacao.Tipo = this.transacaoForm.value.tipoTransacao == 0 ? TipoTransacao.COMPRAR : TipoTransacao.VENDER;
+      this.transacao.Tipo = this.transacaoForm.value.tipoTransacao === 0 ? TipoTransacao.COMPRAR : TipoTransacao.VENDER;
       this.transacoes.push(this.transacao);
       this.inseriTransacoes(this.transacoes);
-      this.transacao = new Transacao;
+      this.transacao = new Transacao();
       this.atualizaComponente();
     }
   }

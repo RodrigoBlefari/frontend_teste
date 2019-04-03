@@ -8,13 +8,13 @@ import { Observable } from 'rxjs';
 export class TransacaoService {
 
   transacoes: Transacao[] = [];
-  
+
   constructor() { }
 
   pegarTranscacoes() {
-    const transacoes: Transacao[] = JSON.parse(localStorage.getItem('transacoes')); 
-     
-    if (transacoes) 
+    const transacoes: Transacao[] = JSON.parse(localStorage.getItem('transacoes'));
+
+    if (transacoes)
     {
       return transacoes;
     }
