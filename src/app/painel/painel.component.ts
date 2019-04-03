@@ -29,10 +29,11 @@ export class PainelComponent implements OnInit {
 
   atualizaComponente() {
     this.recuperaTransacoes();
-    this.pegarTotal(null);
+    this.pegarTotal(TipoTransacao.TODAS);
   }
 
   recuperaTransacoes() {
+    this.transacoes = [];
     this.transacoes = this.transacaoService.pegarTranscacoes();
   }
 
@@ -41,25 +42,32 @@ export class PainelComponent implements OnInit {
   }
 
   pegarTotal(filtro: number) {
-    this.valorTotal = 0;
-    if (filtro == TipoTransacao.COMPRAR || filtro == null)
-      this.transacoes.filter(tra => tra.Tipo == TipoTransacao.COMPRAR).forEach(x => this.valorTotal = this.valorTotal - x.Valor);
+    this.valorTotal = 0;    
 
-    if (filtro == TipoTransacao.VENDER || filtro == null)
-      this.transacoes.filter(tra => tra.Tipo == TipoTransacao.VENDER).forEach(x => this.valorTotal = this.valorTotal + x.Valor);
-  }
+    if (filtro == TipoTransacao.COMPRAR || filtro == TipoTransacao.TODAS)
+      this.transacoes.filter(tra => tra.Tipo == TipoTransacao.COMPRAR).forEach(x => this.valorTotal = this.valorTotal - x.Valor);;
+
+    if (filtro == TipoTransacao.VENDER || filtro == TipoTransacao.TODAS)
+      this.transacoes.filter(tra => tra.Tipo == TipoTransacao.VENDER).forEach(x => this.valorTotal = this.valorTotal + x.Valor);;
+    }
 
   retornaTipoTabela(tipo: number) {
     return tipo == TipoTransacao.COMPRAR ? "-" : "+";
   }
 
   filtro(tipo: number) {
-    this.transacoes = this.transacaoService.pegarTranscacoes().filter(tra => tra.Tipo == tipo);
+    if(tipo != TipoTransacao.TODAS)
+      this.transacoes = this.transacaoService.pegarTranscacoes().filter(tra => tra.Tipo == tipo);
+    else
+      this.transacoes = this.transacaoService.pegarTranscacoes();
+
     this.pegarTotal(tipo);
   }
   zerarTransacoes() {
-    this.transacaoService.zerarTransacoes();
+    this.transacaoService.zerarTransacoes();    
     this.atualizaComponente();
+    this.valorTotal = 0;
+
   }
 
   onSubmit() {

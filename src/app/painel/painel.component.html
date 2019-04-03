@@ -14,8 +14,8 @@
       <a href="#" class="logo">
         <div class=" cl-1 cm-1 cxs-1 cxs-1">
           <div>
-            <span>△</span>
             <span>◯</span>
+            <span>△</span>
           </div>
           <div>
             <span>□</span>
@@ -30,7 +30,7 @@
       <div></div>
       <div></div>
     </div>
-    <ul class="menu-desktop flex cl-3 cs-7">
+    <ul class="menu-desktop flex cl-4 cs-7">
       <li>
         <a class="pipe-right" href="#"> Dashboard</a>
       </li>
@@ -76,6 +76,7 @@
   <div class=" div-extrato cl-8 cm-8 cs-12 csx-12 flex flex-column">
     <h1>Extrato de Transações</h1>
     <div class="cl-2 cm-2 cs-12 cxs-12 flex flex-row">
+        <button type="button" (click)="filtro(2)">Todos</button>
       <button type="button" (click)="filtro(0)">Compras</button>
       <button type="button" (click)="filtro(1)">Vendas</button>
     </div>
