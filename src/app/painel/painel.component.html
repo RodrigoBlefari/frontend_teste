@@ -1,0 +1,104 @@
+<div id="hamburger" class="hamburger flex flex-column">
+  <div class="hamburger-close"><span onclick="closeHamburger(false);">X</span></div>
+  <div class="tright">
+    <ul>
+      <li><a href="#">Resumo </a></li>
+      <li><a href="#">Dashboard</a></li>
+      <li><a href="#">Configurações</a></li>
+    </ul>
+  </div>
+</div>
+<nav class="nav-header flex bgray hg-3 cl-12 cm-12 cxs-12 cxs-12">
+  <div class="flex cl-9 cm-9 cxs-12 cxs-12 center">
+    <div class=" cl-8 cm-12 cxs-12 cxs-12 flex" id="">
+      <a href="#" class="logo">
+        <div class=" cl-1 cm-1 cxs-1 cxs-1">
+          <div>
+            <span>△</span>
+            <span>◯</span>
+          </div>
+          <div>
+            <span>□</span>
+            <span>◇</span>
+          </div>
+        </div>
+      </a>
+      <label class="cl-3 cm-3 cs-7 cxs-7 tright">Controle financeiro</label>
+    </div>
+    <div class="hamburguer-icon cs-2 cxs-2" onclick="closeHamburger(true);">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <ul class="menu-desktop flex cl-3 cs-7">
+      <li>
+        <a class="pipe-right" href="#"> Dashboard</a>
+      </li>
+      <li>
+        <a class="pipe-right" href="#">Resumo</a>
+      </li>
+      <li>
+        <a class="last-li" href="#">Configurações</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="body-div flex flex-column-cs-cxs cl-9 cm-11 cs-12 cxs-12 center">
+  <div class=" cl-6 cm-6 cs-12 cxs-12 flex">
+    <div class="div-form cl-12 cm-12 cs-12 cxs-12 border-shadow">
+      <h1>Nova transação</h1>
+
+      <form [formGroup]="transacaoForm" (ngSubmit)="onSubmit()">
+        <div class="flex-row-cs">
+          <div class="cl-12 cm-12 cs-2 cxs-12">
+            <label>Tipo transação</label>
+            <select formControlName="tipoTransacao">
+              <option value="0" selected>Comprar</option>
+              <option value="1">Vender</option>
+            </select>
+          </div>
+          <div class="cl-12 cm-12 cs-7 cxs-12">
+            Nome da Mercadoria:
+            <input formControlName="mercadoria" type="text" name="mercadoria" placeholder="Mercadoria">
+          </div>
+          <div class="cl-12 cm-12 cs-2 cxs-12">
+            Valor:
+            <input type="text" formControlName="valor" name="valor" value="" placeholder="R$ 0,00">
+          </div>
+        </div>
+        <div class="cl-12 cm-12 cs-3 right cxs-12">
+          <input class="btn-submit" [disabled]="!transacaoForm.valid" type="submit" value="Adicionar transação">
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class=" div-extrato cl-8 cm-8 cs-12 csx-12 flex flex-column">
+    <h1>Extrato de Transações</h1>
+    <div class="cl-2 cm-2 cs-12 cxs-12 flex flex-row">
+      <button type="button" (click)="filtro(0)">Compras</button>
+      <button type="button" (click)="filtro(1)">Vendas</button>
+    </div>
+    <table>
+      <tr class="border-bottom">
+        <th></th>
+        <th>Mercadoria</th>
+        <th>Valor</th>
+      </tr>
+      <tr *ngFor="let t of transacoes" class="border-bottom">
+        <td>{{retornaTipoTabela(t.Tipo)}}</td>
+        <td>{{t.Mercadoria}}</td>
+        <td>{{t.Valor | currency:'BRL'}}</td>
+      </tr>
+      <tr class="border-bottom">
+        <td colspan="2">Total</td>
+        <td>{{valorTotal | currency:'BRL'}}</td>
+      </tr>
+    </table>
+    <div class="cl-12 cm-12 cs-12 cxs-12">
+      <div class="cl-2 cm-2 cs-12 cxs-12 right">
+        <button type="button" (click)="zerarTransacoes()">Zerar Transações</button>
+      </div>
+    </div>
+  </div>
+</div>
