@@ -50,7 +50,7 @@ export class PainelComponent implements OnInit {
   }
 
   retornaTipoTabela(tipo: number) {
-    return tipo === TipoTransacao.COMPRAR ? '-' : '+';
+    return tipo === TipoTransacao.COMPRAR ? "-" : "+";
   }
 
   filtro(tipo: number) {
