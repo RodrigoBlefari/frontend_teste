@@ -18,7 +18,7 @@ export class TransacaoService {
     {
       return transacoes;
     }
-    return this.transacoes;
+    return this.transacoes = [];
   }
 
   inserirTransacoes(transacoes: Transacao[]) {
