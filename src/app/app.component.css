@@ -1,0 +1,318 @@
+/* reset css */
+
+* {
+	font-family: 'Lato', sans-serif !important;
+}
+
+html, body {
+	width: 100%;
+	margin: 0;
+}
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, s del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+h1 {
+	font-size: 1.5em;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+
+body {
+	line-height: 1;
+}
+
+ol, ul {
+	list-style: none;
+}
+
+blockquote, q {
+	quotes: none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+	content: '';
+	content: none;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+img {
+	width: 100%;
+}
+
+.center {
+	margin: auto;
+}
+
+/*const*/
+
+/* flex */
+
+.flex {
+	display: flex;
+}
+
+.flex-column {
+	flex-direction: column
+}
+
+.flex-row {
+	flex-direction: row
+}
+
+.flex-btw {
+	justify-content: space-between;
+}
+
+/* COLORS */
+
+.blue-eyes {
+	color: white;
+	background-color: #002e6b;
+}
+
+.red-mouth {
+	color: #ff0d19;
+	color: white;
+}
+
+.white-snow {
+	color: #002e6b;
+	background-color: #801735
+}
+
+.white {
+	color: white
+}
+
+.red {
+	color: red
+}
+
+.blue {
+	color: blue
+}
+
+.bwhite {
+	background-color: white
+}
+
+.bgray {
+	background-color: #0e0e0e1c
+}
+
+.bblue {
+	background-color: blue
+}
+
+.hg-1 {
+	line-height: 25px;
+	max-height: 25px;
+}
+
+.hg-2 {
+	line-height: 50px;
+	max-height: 50px;
+}
+
+.hg-3 {
+	line-height: 75px;
+	max-height: 75px;
+}
+
+.hg-4 {
+	line-height: 100px;
+	max-height: 100px;
+}
+
+.right {
+	float: right;
+}
+
+.left {
+	float: left;
+}
+
+.tright {
+	text-align: right;
+}
+
+.tleft {
+	text-align: left;
+}
+
+/* Mobile */
+
+@media only screen and (min-width: 276px) {
+	.cxs-1 {
+		width: 8.33
+	}
+	.cxs-2 {
+		width: 16.6666%
+	}
+	.cxs-3 {
+		width: 25%
+	}
+	.cxs-4 {
+		width: 33.3333%
+	}
+	.cxs-5 {
+		width: 41.6666%
+	}
+	.cxs-6 {
+		width: 50%
+	}
+	.cxs-7 {
+		width: 58.3333%
+	}
+	.cxs-8 {
+		width: 66.6666%
+	}
+	.cxs-9 {
+		width: 75%
+	}
+	.cxs-10 {
+		width: 83.3333%
+	}
+	.cxs-11 {
+		width: 91.6666%
+	}
+	.cxs-12 {
+		width: 100%
+	}
+}
+
+/* tablet */
+
+@media only screen and (min-width: 768px) {
+	.cs-1 {
+		width: 8.33
+	}
+	.cs-2 {
+		width: 16.6666%
+	}
+	.cs-3 {
+		width: 25%
+	}
+	.cs-4 {
+		width: 33.3333%
+	}
+	.cs-5 {
+		width: 41.6666%
+	}
+	.cs-6 {
+		width: 50%
+	}
+	.cs-7 {
+		width: 58.3333%
+	}
+	.cs-8 {
+		width: 66.6666%
+	}
+	.cs-9 {
+		width: 75%
+	}
+	.cs-10 {
+		width: 83.3333%
+	}
+	.cs-11 {
+		width: 91.6666%
+	}
+	.cs-12 {
+		width: 100%
+	}
+}
+
+/* web */
+
+@media only screen and (min-width: 992px) {
+	.cm-1 {
+		width: 8.33
+	}
+	.cm-2 {
+		width: 16.6666%
+	}
+	.cm-3 {
+		width: 25%
+	}
+	.cm-4 {
+		width: 33.3333%
+	}
+	.cm-5 {
+		width: 41.6666%
+	}
+	.cm-6 {
+		width: 50%
+	}
+	.cm-7 {
+		width: 58.3333%
+	}
+	.cm-8 {
+		width: 66.6666%
+	}
+	.cm-9 {
+		width: 75%
+	}
+	.cm-10 {
+		width: 83.3333%
+	}
+	.cm-11 {
+		width: 91.6666%
+	}
+	.cm-12 {
+		width: 100%
+	}
+}
+
+/* web large */
+
+@media only screen and (min-width: 1200px) {
+	.cl-1 {
+		width: 8.33
+	}
+	.cl-2 {
+		width: 16.6666%
+	}
+	.cl-3 {
+		width: 25%
+	}
+	.cl-4 {
+		width: 33.3333%
+	}
+	.cl-5 {
+		width: 41.6666%
+	}
+	.cl-6 {
+		width: 50%
+	}
+	.cl-7 {
+		width: 58.3333%
+	}
+	.cl-8 {
+		width: 66.6666%
+	}
+	.cl-9 {
+		width: 75%
+	}
+	.cl-10 {
+		width: 83.3333%
+	}
+	.cl-11 {
+		width: 91.6666%
+	}
+	.cl-12 {
+		width: 100%
+	}
+}
